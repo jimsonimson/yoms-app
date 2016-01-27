@@ -1,0 +1,16 @@
+<h1>Add a Dish</h1>
+<form ng-submit="vm.createDish()">
+  <label>Name of Dish</label><br>
+  <input type="text" ng-model="vm.dish.dishName"><br>
+  <label>Image URL:</label><br>
+  <input type="text" ng-model="vm.dish.imgurl"><br>
+  <label>Tags (kind of dish):</label><br>
+  <input type="text" ng-model="vm.dish.tags"><br>
+  <label>Restaurant:</label><br>
+  <input type="text" ng-model="vm.dish.restaurant.name"><br>
+  <label>Address:</label><br>
+  <input type="text" ng-model="vm.dish.restaurant.address"><br>
+  <label>Phone:</label><br>
+  <input type="text" ng-model="vm.dish.restaurant.phone"><br>
+  <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <h1>YOMS <small>Home Page</small></h1>
+  <h3>Don't see a dish you like? Share it here! <a href="/addDish">Add a dish!</a></h3>
+  <hr>
+  <div class="row">
+    <div class="col-md-3" style="text-align: center" ng-repeat="d in vm.dishes">
+      <h3 style="background-color:  #008080; color:  #ffffff"><a href="/yummydish/{{d._id}}">{{d.dishName}}</a></h3>
+      <h5><span style="color: #008080; font-size: x-large">@</span>{{d.restaurant.name}}</h5>
+      <img class="img-responsive" src="{{d.imgurl}}" alt="" />
+      <span>{{d.tags}}</span>
+    </div>
+  </div>
+</div>
