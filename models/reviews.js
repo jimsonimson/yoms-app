@@ -1,7 +1,8 @@
 'use strict';
 var mongoose = require('mongoose');
 var ReviewSchema = new mongoose.Schema({
-    review: { type: String, required: true },
+    reviewComment: { type: String, required: true },
+    rate: { type: String, required: true },
     posted: { type: Number, default: Date.now },
     deleted: { type: Number, default: null },
     dish: { type: mongoose.Schema.Types.ObjectId, ref: 'Dish', required: true },

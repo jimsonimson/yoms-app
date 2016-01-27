@@ -22,7 +22,6 @@ router.get('/:id', function (req, res, next) {
     Dish.findOne({ _id: req.params.id })
         .populate('createdBy', 'username email')
         .populate('reviews')
-        .populate('reviews.createdBy', 'username email')
         .exec(function (err, dish) {
         Review.populate(dish.reviews, { path: 'createdBy', select: 'username email' }, function (err, out) {
             if (err)

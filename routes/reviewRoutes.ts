@@ -15,7 +15,7 @@ let auth = jwt({
 
 //POST: /api/reviews
 router.post('/', auth, (req, res, next)=>{
-  Dish.findOne({ _id: req.body.pinboard }).exec((err, dish) =>{
+  Dish.findOne({ _id: req.body.dish }).exec((err, dish) =>{
     if (err) return next(err);
     if (!dish) return next({ status: 404, message: 'Dish could not be found idiot. Check reviewRoutes path.'});
     req['dish'] = dish;

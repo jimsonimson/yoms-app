@@ -11,7 +11,7 @@ var auth = jwt({
     userProperty: 'payload'
 });
 router.post('/', auth, function (req, res, next) {
-    Dish.findOne({ _id: req.body.pinboard }).exec(function (err, dish) {
+    Dish.findOne({ _id: req.body.dish }).exec(function (err, dish) {
         if (err)
             return next(err);
         if (!dish)
