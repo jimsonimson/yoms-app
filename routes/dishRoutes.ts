@@ -51,6 +51,16 @@ router.post('/', auth, (req, res, next) => {
   });
 });
 
+//PUT: /api/dishes/:_id
+router.put('/:_id', (req, res, next) => {
+  // () findBy, updateWith, callback)
+  Dish.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, (err, result) => {
+    if (err) return next(err);
+    if (!result) return next({ message: 'could not find and update the dish.' });
+    res.send(result);
+  });
+});
+
 //DELETE: /api/dishes?_id={{dish_id}}
 router.delete("/", (req, res, next) => {
   if (!req.query._id) return next({ status: 404, message: 'Please include an ID'});

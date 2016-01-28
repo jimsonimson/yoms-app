@@ -46,6 +46,15 @@ router.post('/', auth, function (req, res, next) {
         });
     });
 });
+router.put('/:_id', function (req, res, next) {
+    Dish.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, function (err, result) {
+        if (err)
+            return next(err);
+        if (!result)
+            return next({ message: 'could not find and update the dish.' });
+        res.send(result);
+    });
+});
 router.delete("/", function (req, res, next) {
     if (!req.query._id)
         return next({ status: 404, message: 'Please include an ID' });

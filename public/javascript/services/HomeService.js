@@ -19,6 +19,9 @@ var app;
             HomeService.prototype.saveDish = function (dish) {
                 return this.DishResource.save(dish).$promise;
             };
+            HomeService.prototype.updateDish = function (dish) {
+                return this.DishResource.update({ id: dish._id }, dish).$promise;
+            };
             HomeService.prototype.deleteDish = function (dishId) {
                 return this.DishResource.delete({ _id: dishId }).$promise;
             };

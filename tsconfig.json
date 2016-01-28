@@ -29,6 +29,7 @@
         "public/javascript/app.ts",
         "public/javascript/controllers/dishCreateController.ts",
         "public/javascript/controllers/DishPageController.ts",
+        "public/javascript/controllers/dishUpdateController.ts",
         "public/javascript/controllers/globalController.ts",
         "public/javascript/controllers/HomeController.ts",
         "public/javascript/controllers/UserController.ts",

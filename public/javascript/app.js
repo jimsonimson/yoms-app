@@ -28,6 +28,11 @@ var App;
             controller: app.Controllers.DishPageController,
             controllerAs: 'vm'
         })
+            .when('/update/:id', {
+            templateUrl: 'templates/dishUpdate.html',
+            controller: app.Controllers.DishUpdateController,
+            controllerAs: 'vm'
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');

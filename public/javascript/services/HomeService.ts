@@ -18,6 +18,11 @@ namespace app.Services {
       return this.DishResource.save(dish).$promise;
     }
 
+    public updateDish(dish){
+      //PUT: /api/dishes/{{dish._id}}
+      return this.DishResource.update({ id: dish._id }, dish).$promise;
+    }
+
     public deleteDish(dishId){
       // DELETE: /api/dishes?_id={{id}}
       return this.DishResource.delete({ _id: dishId }).$promise;
