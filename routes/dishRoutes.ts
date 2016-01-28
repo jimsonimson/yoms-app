@@ -50,4 +50,12 @@ router.post('/', auth, (req, res, next) => {
   });
 });
 
+//DELETE: /api/dishes?_id={{dish_id}}
+router.delete("/", (req, res, next) => {
+  if (!req.query._id) return next({ status: 404, message: 'Please include an ID'});
+  Dish.remove({ _id: req.query._id }, (err, result) => {
+    res.send({ message: "The Dish was successfully deleted"});
+  });
+});
+
 export = router;

@@ -1,29 +1,43 @@
 <div class="container-fluid">
-  <div class="col-md-4 col-md-offset-4" style="text-align: center">
-    <h1 style="background-color: #008080">{{vm.dish.dishName }}</h1>
-    <h4>from: <strong style="color: #008080; font-size: x-large">{{vm.dish.restaurant.name}}</strong></h4>
-    <img class="img-responsive" src="{{vm.dish.imgurl}}" alt="" />
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1" style="text-align: center">
+
+      <!--Dish name, Restaurant, Image-->
+      <h1 style="background-color: #008080">{{vm.dish.dishName }} <small>added by: {{vm.dish.createdBy.username}}</small></h1>
+      <h4>from: <strong style="color: #008080; font-size: x-large">{{vm.dish.restaurant.name}}</strong></h4>
+
+      <div class="row">
+        <div class="col-md-8">
+          <img class="img-responsive" src="{{vm.dish.imgurl}}" alt="" />
+        </div>
+        <div class="col-md-4">
+          <h3>Contact: </h3>
+          <p>{{vm.dish.restaurant.address}}</p>
+          <p>{{vm.dish.restaurant.phone}}</p>
+        </div>
+      </div>
 
 
-    <!--Review submission-->
-    <form ng-submit="vm.addReview()" ng-show="gc.status.username !== null">
-      <h4 style="color: #eb6864">Add a review</h4>
-      <label>Leave a rating: </label>
-      <uib-rating ng-model="vm.review.rate" max="vm.max" readonly="vm.isReadonly" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
-      <span class="label" ng-class="{'label-warning': percent<60, 'label-info': vm.percent>=40 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar">{{vm.percent}}%</span><br>
-      <label>What would you like to say about this dish?</label><br>
-      <input type="text" placeholder="leave your review" ng-model="vm.review.reviewComment"><br>
-      <button type="submit" name="button">Submit</button><br>
-    </form>
+      <!--Review submission-->
+      <form ng-submit="vm.addReview()" ng-show="gc.status.username !== null">
+        <h4 style="color: #eb6864">Add a review</h4>
+        <label>Leave a rating: </label>
+        <uib-rating ng-model="vm.review.rate" max="vm.max" readonly="vm.isReadonly" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+        <span class="label" ng-class="{'label-warning': percent<60, 'label-info': vm.percent>=40 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar">{{vm.percent}}%</span><br>
+        <label>What would you like to say about this dish?</label><br>
+        <input type="text" placeholder="leave your review" ng-model="vm.review.reviewComment"><br>
+        <button type="submit" name="button">Submit</button><br>
+      </form>
 
-    <hr>
+      <hr>
 
-    <!--Reviews-->
-    <div  ng-repeat="r in vm.dish.reviews">
-      <h2 style="color: #008080">{{r.createdBy.username}}</h2>
-      <h6>rating: {{r.rate}}</h6>
-      <p>{{r.reviewComment}}</p>
+      <!--Reviews-->
+      <div  ng-repeat="r in vm.dish.reviews">
+        <h2 style="color: #008080">{{r.createdBy.username}}</h2>
+        <h6>rating: {{r.rate}}</h6>
+        <p>{{r.reviewComment}}</p>
+      </div>
+
     </div>
-
   </div>
 </div>

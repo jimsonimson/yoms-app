@@ -1,0 +1,10 @@
+.wrapper {
+    max-width:720px;
+    max-height:660px;
+}
+
+.ArtistPic {
+    max-height: 100%;
+    max-width:100%;
+    width: auto;
+}

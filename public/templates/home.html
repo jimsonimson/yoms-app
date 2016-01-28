@@ -8,6 +8,7 @@
       <h5><span style="color: #008080; font-size: x-large">@</span>{{d.restaurant.name}}</h5>
       <img class="img-responsive" src="{{d.imgurl}}" alt="" />
       <span>{{d.tags}}</span>
+      <button ng-click="vm.delete(d._id)">DELETE</button>
     </div>
   </div>
 </div>

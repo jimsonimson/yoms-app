@@ -18,6 +18,11 @@ namespace app.Services {
       return this.DishResource.save(dish).$promise;
     }
 
+    public deleteDish(dishId){
+      // DELETE: /api/dishes?_id={{id}}
+      return this.DishResource.delete({ _id: dishId }).$promise;
+    }
+
     constructor(
       private $resource: ng.resource.IResourceService
     ) {

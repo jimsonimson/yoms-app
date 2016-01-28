@@ -46,4 +46,11 @@ router.post('/', auth, function (req, res, next) {
         });
     });
 });
+router.delete("/", function (req, res, next) {
+    if (!req.query._id)
+        return next({ status: 404, message: 'Please include an ID' });
+    Dish.remove({ _id: req.query._id }, function (err, result) {
+        res.send({ message: "The Dish was successfully deleted" });
+    });
+});
 module.exports = router;

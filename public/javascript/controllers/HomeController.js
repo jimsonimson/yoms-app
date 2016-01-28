@@ -8,6 +8,13 @@ var app;
                 this.HomeService = HomeService;
                 this.dishes = HomeService.getAll();
             }
+            HomeController.prototype.delete = function (id) {
+                var _this = this;
+                this.HomeService.deleteDish(id).then(function (res) {
+                    _this.dishes = _this.dishes.filter(function (d) { return d._id !== id; });
+                });
+            };
+            ;
             return HomeController;
         }());
         Controllers.HomeController = HomeController;

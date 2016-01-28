@@ -3,7 +3,15 @@ namespace app.Controllers {
   export class HomeController {
     public dishes;
 
-    constructor(private HomeService: app.Services.HomeService) {
+    public delete(id) {
+      this.HomeService.deleteDish(id).then((res)=>{
+        this.dishes = this.dishes.filter((d) => d._id !== id);
+      });
+    };
+
+    constructor(
+      private HomeService: app.Services.HomeService
+    ) {
       this.dishes = HomeService.getAll();
     }
   }
