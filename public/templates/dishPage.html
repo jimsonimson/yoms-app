@@ -2,10 +2,12 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1" style="text-align: center">
 
-      <!--Dish name, Restaurant, Image-->
+      <!--Dish name, Restaurant name, Favorite button-->
       <h1 style="background-color: #008080">{{vm.dish.dishName }} <small>added by: {{vm.dish.createdBy.username}}</small></h1>
       <h4>from: <strong style="color: #008080; font-size: x-large">{{vm.dish.restaurant.name}}</strong></h4>
+      <h4 style="color: #eb6864" ng-show="gc.status.username !== null"><button ng-click="vm.addFavorite()">Favorite!</button></h4>
 
+      <!--Dish Image / Contact Info-->
       <div class="row">
         <div class="col-md-8">
           <img class="img-responsive" src="{{vm.dish.imgurl}}" alt="" />
@@ -31,11 +33,12 @@
 
       <hr>
 
-      <!--Reviews-->
+      <!--Reviews/ Added delete feature-->
       <div  ng-repeat="r in vm.dish.reviews">
         <h2 style="color: #008080">{{r.createdBy.username}}</h2>
-        <h6>rating: {{r.rate}}</h6>
+        <h6>rating: {{r.rate}}/5</h6>
         <p>{{r.reviewComment}}</p>
+
       </div>
 
     </div>

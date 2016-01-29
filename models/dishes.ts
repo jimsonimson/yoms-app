@@ -6,6 +6,7 @@ let DishSchema = new mongoose.Schema({
   imgurl: { type: String, required: true },
   tags: [{ type: String, required: true}],
   reviews: [ {type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+  favoritedByUser: [ {type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   restaurant: {
     name: { type: String, required: true },

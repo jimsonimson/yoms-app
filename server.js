@@ -23,9 +23,11 @@ app.use('/scripts', express.static('bower_components'));
 var userRoutes = require('./routes/userRoutes');
 var dishRoutes = require('./routes/dishRoutes');
 var reviewRoutes = require('./routes/reviewRoutes');
+var favoritesRoutes = require('./routes/favoritesRoutes');
 app.use('/api/users', userRoutes);
 app.use('/api/dishes', dishRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/bananas', favoritesRoutes);
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|javascript/.test(req.path))
         return next({ status: 404, message: 'Not Found' });

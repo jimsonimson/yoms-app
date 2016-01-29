@@ -7,9 +7,16 @@ var app;
             function ReviewService($resource) {
                 this.$resource = $resource;
                 this.reviewResource = $resource('/api/reviews/:id');
+                this.favoriteResource = $resource('/api/bananas/:id');
             }
             ReviewService.prototype.saveReview = function (review) {
                 return this.reviewResource.save(review).$promise;
+            };
+            ReviewService.prototype.saveFavorite = function (favDish) {
+                return this.favoriteResource.save(favDish).$promise;
+            };
+            ReviewService.prototype.getAll = function () {
+                return this.favoriteResource.query();
             };
             return ReviewService;
         }());

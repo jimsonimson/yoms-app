@@ -28,6 +28,16 @@ namespace app.Controllers {
       });
     }
 
+    public addFavorite(){
+      let favoritedDish = {
+        dish: this.dish._id,
+      };
+      this.ReviewService.saveFavorite(favoritedDish).then((res) =>{
+        console.log(res);
+        this.$location.path('/') //add ngToast here
+      })
+    }
+
     constructor(
       private HomeService: app.Services.HomeService,
       private $routeParams: ng.route.IRouteParamsService,

@@ -33,6 +33,16 @@ var app;
                     _this.$location.path('/yummydish/' + _this.dish._id);
                 });
             };
+            DishPageController.prototype.addFavorite = function () {
+                var _this = this;
+                var favoritedDish = {
+                    dish: this.dish._id,
+                };
+                this.ReviewService.saveFavorite(favoritedDish).then(function (res) {
+                    console.log(res);
+                    _this.$location.path('/');
+                });
+            };
             return DishPageController;
         }());
         Controllers.DishPageController = DishPageController;

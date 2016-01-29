@@ -7,9 +7,9 @@ var UserSchema = new mongoose.Schema({
     email: { type: String, unique: true, lowercase: true },
     passwordHash: String,
     salt: String,
-    dishes: [{ type: mongoose.Schema.Types.ObjectId, ref: '' }],
-    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: '' }],
-    restaurants: [{ type: mongoose.Schema.Types.ObjectId, ref: '' }]
+    dishes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Dish' }],
+    favoriteDishes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Dish' }],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }]
 });
 UserSchema.method('setPassword', function (password) {
     this.salt = crypto.randomBytes(16).toString('hex');

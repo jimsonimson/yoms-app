@@ -33,6 +33,11 @@ var App;
             controller: app.Controllers.DishUpdateController,
             controllerAs: 'vm'
         })
+            .when('/userProfile', {
+            templateUrl: '/templates/userFavorites.html',
+            controller: app.Controllers.UserFavoriteController,
+            controllerAs: 'vm'
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');
