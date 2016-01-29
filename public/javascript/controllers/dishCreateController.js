@@ -11,8 +11,20 @@ var app;
             }
             DishCreateController.prototype.createDish = function () {
                 var _this = this;
-                this.HomeService.saveDish(this.dish).then(function (res) {
-                    _this.$location.path('/');
+                this.geocoder(function () {
+                    _this.HomeService.saveDish(_this.dish).then(function (res) {
+                        _this.$location.path('/');
+                    });
+                });
+            };
+            DishCreateController.prototype.geocoder = function (cb) {
+                var _this = this;
+                var geo = new google.maps.Geocoder();
+                geo.geocode({ "address": this.dish.restaurant.address }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
+                        _this.dish.restaurant.location = results[0].geometry.location;
+                        cb();
+                    }
                 });
             };
             return DishCreateController;

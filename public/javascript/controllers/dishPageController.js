@@ -4,16 +4,25 @@ var app;
     var Controllers;
     (function (Controllers) {
         var DishPageController = (function () {
-            function DishPageController(HomeService, $routeParams, UserService, ReviewService, $location) {
+            function DishPageController(HomeService, $routeParams, UserService, ReviewService, $location, uiGmapGoogleMapApi) {
+                var _this = this;
                 this.HomeService = HomeService;
                 this.$routeParams = $routeParams;
                 this.UserService = UserService;
                 this.ReviewService = ReviewService;
                 this.$location = $location;
+                this.uiGmapGoogleMapApi = uiGmapGoogleMapApi;
+                this.dish = { _id: null, reviews: [], restaurant: { location: { lat: null, lng: null } } };
                 this.rate = 3;
                 this.max = 5;
                 this.isReadonly = false;
-                this.dish = HomeService.getDish($routeParams['id']);
+                HomeService.getDish($routeParams['id']).then(function (dish) {
+                    _this.dish = dish;
+                    _this.markers = [{ id: 0, options: { title: _this.dish.restaurant.name }, latitude: dish.restaurant.location.lat, longitude: dish.restaurant.location.lng }];
+                    _this.uiGmapGoogleMapApi.then(function (maps) {
+                        _this.map = { center: { latitude: _this.dish.restaurant.location.lat, longitude: _this.dish.restaurant.location.lng }, zoom: 10 };
+                    });
+                });
             }
             DishPageController.prototype.hoveringOver = function (value) {
                 this.overStar = value;

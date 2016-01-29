@@ -3,8 +3,10 @@ namespace app.Controllers {
   export class DishPageController {
     public percent;
     public overStar;
-    public dish;
+    public dish = { _id: null, reviews: [], restaurant: { location: { lat: null, lng: null}}};
     public review;
+    public map;
+    public markers;
 
     public rate = 3;
     public max = 5;
@@ -38,14 +40,23 @@ namespace app.Controllers {
       })
     }
 
+
+
     constructor(
       private HomeService: app.Services.HomeService,
       private $routeParams: ng.route.IRouteParamsService,
       private UserService: app.Services.UserService,
       private ReviewService: app.Services.ReviewService,
-      private $location: ng.ILocationService
+      private $location: ng.ILocationService,
+      private uiGmapGoogleMapApi
     ){
-      this.dish = HomeService.getDish( $routeParams['id']);
+      HomeService.getDish( $routeParams['id']).then((dish)=>{
+        this.dish = dish;
+        this.markers = [{ id: 0, options:{ title: this.dish.restaurant.name}, latitude: dish.restaurant.location.lat, longitude: dish.restaurant.location.lng}]
+        this.uiGmapGoogleMapApi.then((maps) => {
+          this.map = { center: { latitude: this.dish.restaurant.location.lat, longitude: this.dish.restaurant.location.lng }, zoom: 10 };
+        });
+      });
     }
   }
   angular.module('app').controller('DishPageController', DishPageController);

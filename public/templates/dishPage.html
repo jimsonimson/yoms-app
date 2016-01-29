@@ -3,7 +3,7 @@
     <div class="col-md-10 col-md-offset-1" style="text-align: center">
 
       <!--Dish name, Restaurant name, Favorite button-->
-      <h1 style="background-color: #008080">{{vm.dish.dishName }} <small>added by: {{vm.dish.createdBy.username}}</small></h1>
+      <h1 style="background-color: #eb6864">{{vm.dish.dishName }} <small>added by: {{vm.dish.createdBy.username}}</small></h1>
       <h4>from: <strong style="color: #008080; font-size: x-large">{{vm.dish.restaurant.name}}</strong></h4>
       <h4 style="color: #eb6864" ng-show="gc.status.username !== null"><button ng-click="vm.addFavorite()">Favorite!</button></h4>
 
@@ -16,7 +16,17 @@
           <h3>Contact: </h3>
           <p>{{vm.dish.restaurant.address}}</p>
           <p>{{vm.dish.restaurant.phone}}</p>
+          <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
+            <ui-gmap-markers
+              models="vm.markers"
+              coords="'self'"
+              icon="'icon'"
+              options="'options'">
+            </ui-gmap-markers>
+          </ui-gmap-google-map>
         </div>
+
+
       </div>
 
 

@@ -4,9 +4,22 @@ namespace app.Controllers {
     public dish = {};
 
     public createDish(){
-      this.HomeService.saveDish(this.dish).then((res) =>{
-        this.$location.path('/')
+      this.geocoder(()=>{
+        this.HomeService.saveDish(this.dish).then((res) =>{
+          this.$location.path('/')
+        })
       })
+
+    }
+
+    public geocoder(cb){
+      var geo = new google.maps.Geocoder();
+      geo.geocode( { "address": this.dish.restaurant.address }, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
+          this.dish.restaurant.location = results[0].geometry.location;
+          cb();
+        }
+      });
     }
 
     constructor(

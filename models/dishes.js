@@ -10,7 +10,8 @@ var DishSchema = new mongoose.Schema({
     restaurant: {
         name: { type: String, required: true },
         address: { type: String, required: true },
-        phone: { type: String }
+        phone: { type: String },
+        location: {}
     }
 });
 exports.Dish = mongoose.model('Dish', DishSchema);

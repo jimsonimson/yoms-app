@@ -2,8 +2,14 @@
   <h1>YOMS <small>Home Page</small></h1>
   <h3>Don't see a dish you like? Share it here! <a href="/addDish">Add a dish!</a></h3>
   <hr>
-  <div class="row">
-    <div class="col-md-3" style="text-align: center" ng-repeat="d in vm.dishes">
+
+  <!--Search Function-->
+  <input type="text" name="name" placeholder="search a dish: chinese, taco, sandwich..." ng-model="search">
+  <h1 ng-show="search">Search for: <span style="color:  #008080">{{search}}</span></h1>
+
+  <!--ng-repeat of each dish-->
+  <div ng-show="search" class="row">
+    <div class="col-md-3" style="text-align: center" ng-repeat="d in vm.dishes | filter: search">
       <h3 style="background-color:  #008080; color:  #ffffff"><a href="/yummydish/{{d._id}}">{{d.dishName}}</a></h3>
       <h5><span style="color: #008080; font-size: x-large">@</span>{{d.restaurant.name}}</h5>
       <img class="img-responsive" src="{{d.imgurl}}" alt="" />
@@ -12,4 +18,5 @@
       <button ng-click="vm.delete(d._id)">DELETE</button>
     </div>
   </div>
+
 </div>

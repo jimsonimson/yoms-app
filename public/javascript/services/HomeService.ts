@@ -10,7 +10,7 @@ namespace app.Services {
 
     public getDish(dishId){
       //GET: /api/dishes/{{dishId}}
-      return this.DishResource.get({ id: dishId});
+      return this.DishResource.get({ id: dishId}).$promise;
     }
 
     public saveDish(dish){

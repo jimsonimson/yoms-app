@@ -1,7 +1,14 @@
 'use strict';
 var App;
 (function (App) {
-    angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
+    angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate', 'uiGmapgoogle-maps'])
+        .config(function (uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+            Key: 'AIzaSyDcawZHhZEZT-COq4TFbrIzbHi6cOjtyzY',
+            v: '3.20',
+            libraries: 'weather, geometry, visualization'
+        });
+    })
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
             templateUrl: '/templates/Home.html',

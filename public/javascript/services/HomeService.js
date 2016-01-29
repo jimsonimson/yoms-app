@@ -14,7 +14,7 @@ var app;
                 return this.DishResource.query();
             };
             HomeService.prototype.getDish = function (dishId) {
-                return this.DishResource.get({ id: dishId });
+                return this.DishResource.get({ id: dishId }).$promise;
             };
             HomeService.prototype.saveDish = function (dish) {
                 return this.DishResource.save(dish).$promise;

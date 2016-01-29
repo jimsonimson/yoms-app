@@ -1,6 +1,16 @@
 'use strict';
 namespace App {
-  angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
+  angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate', 'uiGmapgoogle-maps'])
+
+  .config((uiGmapGoogleMapApiProvider) => {
+    uiGmapGoogleMapApiProvider.configure({
+      //key: 'api key given' (only needed when you need more than 25k map reloads in a day)
+      Key: 'AIzaSyDcawZHhZEZT-COq4TFbrIzbHi6cOjtyzY',
+      v: '3.20',
+      libraries: 'weather, geometry, visualization'
+    });
+  })
+
   .config((
     $routeProvider: ng.route.IRouteProvider,
     $locationProvider: ng.ILocationProvider,
