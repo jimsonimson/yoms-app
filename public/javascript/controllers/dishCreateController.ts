@@ -9,7 +9,6 @@ namespace app.Controllers {
           this.$location.path('/')
         })
       })
-
     }
 
     public geocoder(cb){

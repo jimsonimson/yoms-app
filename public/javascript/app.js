@@ -45,6 +45,11 @@ var App;
             controller: app.Controllers.UserFavoriteController,
             controllerAs: 'vm'
         })
+            .when('/viewAll', {
+            templateUrl: '/templates/viewAll.html',
+            controller: app.Controllers.HomeController,
+            controllerAs: 'vm'
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');

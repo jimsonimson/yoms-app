@@ -43,7 +43,7 @@ router.post('/', auth, (req, res, next)=>{
   });
 });
 
-// DELETE: /api/comments/:id
+// DELETE: /api/reviews/:id
 router.delete('/:id', auth, (req, res, next) =>{
   Review.update({ _id: req.params.id }, { deleted: Date.now() }, (err, result) => {
     if (err) return next(err);

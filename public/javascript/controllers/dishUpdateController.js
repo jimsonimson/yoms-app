@@ -5,10 +5,13 @@ var app;
     (function (Controllers) {
         var DishUpdateController = (function () {
             function DishUpdateController(HomeService, $location, $routeParams) {
+                var _this = this;
                 this.HomeService = HomeService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
-                this.dish = HomeService.getDish($routeParams['id']);
+                HomeService.getDish($routeParams['id']).then(function (res) {
+                    _this.dish = res;
+                });
             }
             DishUpdateController.prototype.updateDish = function () {
                 var _this = this;

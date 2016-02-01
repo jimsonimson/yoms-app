@@ -16,6 +16,8 @@
           <h3>Contact: </h3>
           <p>{{vm.dish.restaurant.address}}</p>
           <p>{{vm.dish.restaurant.phone}}</p>
+
+          <!--Google Maps-->
           <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
             <ui-gmap-markers
               models="vm.markers"
@@ -37,7 +39,7 @@
         <uib-rating ng-model="vm.review.rate" max="vm.max" readonly="vm.isReadonly" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
         <span class="label" ng-class="{'label-warning': percent<60, 'label-info': vm.percent>=40 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar">{{vm.percent}}%</span><br>
         <label>What would you like to say about this dish?</label><br>
-        <input type="text" placeholder="leave your review" ng-model="vm.review.reviewComment"><br>
+        <textarea ng-model="vm.review.reviewComment" type="text" rows="4" cols="50" name="comment" form="usrform" placeholder="Enter review here..."></textarea><br>
         <button type="submit" name="button">Submit</button><br>
       </form>
 
@@ -48,7 +50,8 @@
         <h2 style="color: #008080">{{r.createdBy.username}}</h2>
         <h6>rating: {{r.rate}}/5</h6>
         <p>{{r.reviewComment}}</p>
-
+        <button class="btn btn-danger btn-xs glyphicon glyphicon-trash" ng-hide="gc.status.username !== r.createdBy.username" type="button" ng-click="vm.deleteReview(r)"></button>
+        <hr>
       </div>
 
     </div>

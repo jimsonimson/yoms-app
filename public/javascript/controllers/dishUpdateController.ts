@@ -14,7 +14,9 @@ namespace app.Controllers {
       private $location: ng.ILocationService,
       private $routeParams: ng.route.IRouteParamsService
     ){
-      this.dish = HomeService.getDish($routeParams['id']);
+      HomeService.getDish($routeParams['id']).then((res) =>{
+        this.dish = res;
+      });
     };
   }
   angular.module('app').controller('DishUpdateController', DishUpdateController);

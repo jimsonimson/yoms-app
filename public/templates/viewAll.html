@@ -1,5 +1,5 @@
 <div class="container-fluid" style="text-align: center">
-  <h1 class="animated fadeInDownBig">YOMS <small>Home Page</small></h1>
+  <h1 class="animated fadeInDownBig">YOMS <small>All Dishes</small></h1>
     <!--Search Function-->
   <h3 class="animated slideInRight">Search a dish here</h3><input class="animated slideInRight" type="text" name="name" placeholder="search" ng-model="search">
   <hr>
@@ -9,14 +9,16 @@
   <h1 ng-show="search">Find me... <span style="color:  #008080">{{search}}</span></h1>
 
   <!--ng-repeat of each dish-->
-  <div ng-show="search" class="row">
-    <div class="col-md-3" style="text-align: center" ng-repeat="d in vm.dishes | filter: search">
+  <div class="row">
+    <div class="col-md-3 animated fadeInUpBig" style="text-align: center" ng-repeat="d in vm.dishes | filter: search">
       <h3 style="background-color:  #008080; color:  #ffffff"><a href="/yummydish/{{d._id}}">{{d.dishName}}</a></h3>
       <h5><span style="color: #008080; font-size: x-large">@</span>{{d.restaurant.name}}</h5>
-      <img class="img-responsive" height="50" src="{{d.imgurl}}" alt="" />
+      <img class="img-responsive" src="{{d.imgurl}}" alt="" />
+
       <div ng-repeat="t in d.tags">
         <label class="label label-primary">{{t}}</label>
       </div>
+
       <a href="/update/{{d._id}}">update</a>
       <button class="btn btn-danger btn-xs glyphicon glyphicon-trash" ng-click="vm.delete(d._id)"></button>
     </div>

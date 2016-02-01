@@ -18,6 +18,9 @@ var app;
             ReviewService.prototype.getAll = function () {
                 return this.favoriteResource.query();
             };
+            ReviewService.prototype.deleteReview = function (review) {
+                return this.reviewResource.delete({ id: review._id }).$promise;
+            };
             return ReviewService;
         }());
         Services.ReviewService = ReviewService;

@@ -40,6 +40,12 @@ namespace app.Controllers {
       })
     }
 
+    public deleteReview(review){
+      this.ReviewService.deleteReview(review).then((res) => {
+        this.dish.reviews.splice(this.dish.reviews.indexOf(review), 1)
+      });
+    };
+
 
 
     constructor(
@@ -54,7 +60,7 @@ namespace app.Controllers {
         this.dish = dish;
         this.markers = [{ id: 0, options:{ title: this.dish.restaurant.name}, latitude: dish.restaurant.location.lat, longitude: dish.restaurant.location.lng}]
         this.uiGmapGoogleMapApi.then((maps) => {
-          this.map = { center: { latitude: this.dish.restaurant.location.lat, longitude: this.dish.restaurant.location.lng }, zoom: 10 };
+          this.map = { center: { latitude: this.dish.restaurant.location.lat, longitude: this.dish.restaurant.location.lng }, zoom: 15 };
         });
       });
     }

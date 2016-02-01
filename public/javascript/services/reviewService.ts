@@ -16,6 +16,10 @@ namespace app.Services {
       return this.favoriteResource.query();
     }
 
+    public deleteReview(review){
+      return this.reviewResource.delete({ id: review._id }).$promise;
+    }
+
     constructor(
       private $resource: ng.resource.IResourceService
     ){

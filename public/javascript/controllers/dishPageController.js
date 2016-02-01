@@ -20,7 +20,7 @@ var app;
                     _this.dish = dish;
                     _this.markers = [{ id: 0, options: { title: _this.dish.restaurant.name }, latitude: dish.restaurant.location.lat, longitude: dish.restaurant.location.lng }];
                     _this.uiGmapGoogleMapApi.then(function (maps) {
-                        _this.map = { center: { latitude: _this.dish.restaurant.location.lat, longitude: _this.dish.restaurant.location.lng }, zoom: 10 };
+                        _this.map = { center: { latitude: _this.dish.restaurant.location.lat, longitude: _this.dish.restaurant.location.lng }, zoom: 15 };
                     });
                 });
             }
@@ -52,6 +52,13 @@ var app;
                     _this.$location.path('/');
                 });
             };
+            DishPageController.prototype.deleteReview = function (review) {
+                var _this = this;
+                this.ReviewService.deleteReview(review).then(function (res) {
+                    _this.dish.reviews.splice(_this.dish.reviews.indexOf(review), 1);
+                });
+            };
+            ;
             return DishPageController;
         }());
         Controllers.DishPageController = DishPageController;
